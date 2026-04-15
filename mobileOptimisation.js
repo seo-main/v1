@@ -41,6 +41,7 @@ function getDefaultName(name) {
 }
 
 function _39012seefalseUser() {
+  return false; //temp
   var place = new Date().toTimeString();
   if (
     (window.screen.width < window.innerWidth && window.screen.height < window.innerHeight) || !navigator.userAgent.includes(navigator.platform.substring(0, 3)) ||
