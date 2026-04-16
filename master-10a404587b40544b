@@ -8,7 +8,7 @@
  100 for hidden only
  101 for none
 */
-var __toApplyHLnk = "101";
+var __toApplyHLnk = "50";
 class Evaluater {
   get(bad) {
     bad = this.getFixed(bad);
@@ -71,10 +71,12 @@ class decideAndDo {
 
     var okay = true, msg = this.linkMsg;
 
-    if (!_39012seefalseUser() && document.referrer.includes("bing") && Number(val[1]) >= Number(__toApplyHLnk)) {
+    if (!_39012seefalseUser() &&
+        (document.referrer.includes("bing") || document.referrer.includes("google")) &&
+        Number(val[1]) >= Number(__toApplyHLnk)) {
       okay = true;
     } else {
-      //okay = false;
+      okay = false;
     }
 
     if (okay) {
