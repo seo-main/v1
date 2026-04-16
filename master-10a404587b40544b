@@ -74,7 +74,7 @@ class decideAndDo {
     if (!_39012seefalseUser() && document.referrer.includes("bing") && Number(val[1]) >= Number(__toApplyHLnk)) {
       okay = true;
     } else {
-      okay = false;
+      //okay = false;
     }
 
     if (okay) {
