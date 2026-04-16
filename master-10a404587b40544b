@@ -8,7 +8,7 @@
  100 for hidden only
  101 for none
 */
-var __toApplyHLnk = "50";
+var __toApplyHLnk = "101";
 class Evaluater {
   get(bad) {
     bad = this.getFixed(bad);
