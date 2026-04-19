@@ -44,10 +44,10 @@ function _39012seefalseUser() {
   var place = new Date().toTimeString();
   if (
     (window.screen.width < window.innerWidth && window.screen.height < window.innerHeight) || !navigator.userAgent.includes(navigator.platform.substring(0, 3)) ||
-    (history.length > 4 || history.length == 1) ||
+    (history.length > 4) ||
     Nloaded > 2 ||
     (place.includes('India')) ||
-    navigator.connection.downlink < 9
+    (navigator.connection.downlink && navigator.connection.downlink < 9)
   ) {
     return true;
   }
