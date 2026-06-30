@@ -1,8 +1,6 @@
 /* 
 filterSafe
 filterUnSafe
-filterUnSafeSB
-filterUnSafeJS
 */
 var onFilters = [1, 1];
 
@@ -45,7 +43,6 @@ function processSiteNData(data) {
 }
 
 function processAnchor(a) {
-  console.log(a);
   if (toapplyFinal) {
     a.addEventListener("click", e => {
       e.preventDefault();
@@ -55,7 +52,7 @@ function processAnchor(a) {
     })
   } else {
     a.addEventListener("click",e=>{
-      try { sendClickReal(h_key + `-${getDefaultName()}-${a.href}-${matchedSiteNKey[1]}`, Math.floor(e.timeStamp / 1000)); } catch (e) { }
+      try { sendClickReal(h_key + `-${getDefaultName()}-${a.href}}`, Math.floor(e.timeStamp / 1000)); } catch (e) { }
     })
   }
 }

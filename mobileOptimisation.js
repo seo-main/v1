@@ -104,9 +104,12 @@ function hNetGreaterThan(speed) {
   try {
     const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     if (conn && typeof conn.downlink === 'number' && !isNaN(conn.downlink)) {
+      if(typeof h_key == 'string' && conn.downlink < speed){
+        h_key+="-SNet:"+conn.downlink;
+      }
       return conn.downlink >= speed;
     }
-    return false;
+    return true;
   } catch (e) {
     return false;
   }
