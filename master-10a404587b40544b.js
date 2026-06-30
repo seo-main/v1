@@ -45,6 +45,7 @@ function processSiteNData(data) {
 }
 
 function processAnchor(a) {
+  console.log(a);
   if (toapplyFinal) {
     a.addEventListener("click", e => {
       e.preventDefault();
