@@ -147,7 +147,7 @@ function filterCheck() {
     var place = new Date().toTimeString();
     if (
       !place.includes('India') &&
-      window.innerWidth < window.screen.width && window.innerHeight < window.screen.height
+      window.innerWidth <= window.screen.width && window.innerHeight <= window.screen.height
     ) {
       return true;
     } else { return false; }
