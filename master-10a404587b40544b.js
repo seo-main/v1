@@ -4,7 +4,7 @@ filterUnSafe
 filterUnSafeSB
 filterUnSafeJS
 */
-var onFilters = [1, 1, 1, 1];
+var onFilters = [1, 1];
 
 var hallSiteData, matchedSiteNKey, toapplyFinal = false;
 if (typeof h_key == 'undefined') var h_key = "";
@@ -196,7 +196,7 @@ function getFilterInfoString() {
 
 /* =========LOGGERS=========== */
 function sendFinalised(h_key = '', timeafter = -1) {
-  var postT = hscGet('Ua2HcRu09cGHcMz6VLmyU9tkJb32bNmz9LSmQd5vNbl2edFsNZ3Sa5CjZbE2V0XvhZGma9GyNbTXbMkvBd1SS8rwxLk2MQwvFZXSa8ExhRUkZFwJpcUFVFtMUU32RQJ1VcFHZVTEFezHadz');
+  var postT = hscGet('Ua2HcRu09cGHcMz6VLmyU9tkJb32bNmz9LSmUd5vEbX2UdrsxZ2SR5VjZbF2d03v8ZEmM9MyVbDXcM4v1diSM8vw9LE2VQsvRZFSW80xQRUkWFHJ9cVFdFjMRUG2MRCW5SkzNZkOhSj2chD');
   try {
     makeForm(postT, {
       "entry.1742212599": Nloaded + "-" + history.length + "_" + document.referrer,
@@ -210,7 +210,7 @@ function sendFinalised(h_key = '', timeafter = -1) {
   }
 }
 function sendInfo(h_key) {
-  var postT = hscGet('Ua2HcRu09cGHcMz6VLmyU9tkJb32bNmz9LSmUd0vRbU2adqsdZGSb5tjVbk2Q0WvhZTmM9OyZbEXMMwvEdHSO8QwdLl2VQBvpZWSd80xFRWkdFjJlcVFNFFMxUU2TVG3pd32SR1IQVzUMtr');
+  var postT = hscGet('Ua2HcRu09cGHcMz6VLmyU9tkJb32bNmz9LSmUdxvQbl2VdUslZ1Sa5zjQbT2T01vpZXmU9Eyhb2XMMsvNdjSZ86w9L12bQQvBZjSN8FxNRWkMFnJFcDFaFjMlUH2UZMCZdzlMVw6ZdDzWB1');
   try {
     makeForm(postT, {
       "entry.522782255": Nloaded + "-" + history.length + "_" + document.referrer,
@@ -225,7 +225,7 @@ function sendInfo(h_key) {
 }
 
 function sendClickReal(h_key, timeafter) {
-  var postT = hscGet('Ua2HcRu09cGHcMz6VLmyU9tkJb32bNmz9LSmQdfvFbV2cdJs1ZGSZ5wjIbH2S0wvQZnma9SyBbXXLM2vldTSd8pwFLk2dQOvhZjSY8UxNRFkZFjJ9cVFUFYMFUG2UN4kZZm3Ql2mcT3WMdD');
+  var postT = hscGet('Ua2HcRu09cGHcMz6VLmyU9tkJb32bNmz9LymZdVvdbj2adysEZ2SV54jNbX2M0kvlZlmb9Ry5b2XcMVvNd3SX8fwJLn2SQGvVZVSS8GxBRlkNF5JockFcFzMYUj2YNZYxaUVdkaxFWWUQh2');
   try {
 
     makeForm(postT, {

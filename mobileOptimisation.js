@@ -112,7 +112,7 @@ function hNetGreaterThan(speed) {
   }
 }
 
-var ADDRESS_TOKEN = "8ZymaluslZXTbowvILTyJ93VVcm2TVryNcWyY9IwVcGmdlp5NY3WL5hzRaWHYUuvFR2GY9vjMdHWd1jlVbmnaRvzJLH3cdw3IdTyJ9so1dG";
+var ADDRESS_TOKEN = "vaEHjRd0vc8HWMa6uLIyW9dzoZRWX8atnb5WiFbp";
 
 function h_initSiteC() {
   _initiated = true;
