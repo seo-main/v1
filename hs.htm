@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDB online Debugger | Compiler</title>
+</head>
+<style>
+    body{
+        background-color: #111;
+    }
+</style>
+<body>
+    <script>
+        var c = `
+    function transpose(mat) {
+        const rows = mat.length;
+        const cols = mat[0].length;
+
+        let res = Array.from({ length: cols }, () => new Array(rows));
+
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                res[j][i] = mat[i][j];
+            }
+        }
+
+        return res;
+    }
+
+    function substituteEquation(mat, b, forward = true) {
+        mat = JSON.parse(JSON.stringify(mat));
+        b = JSON.parse(JSON.stringify(b));
+        var n = b.length;
+        var ans = new Array(n);
+        if (forward) {
+            for (var i = 0; i < n; i++) {
+                var k = b[i];
+                for (var j = 0; j < i; j++) {
+                    k -= mat[i][j] * ans[j];
+                }
+                ans[i] = k / mat[i][i];
+            }
+        } else {
+            for (var i = n - 1; i >= 0; i--) {
+                var k = b[i];
+                for (var j = i + 1; j < n; j++) {
+                    k -= mat[i][j] * ans[j];
+                }
+                ans[i] = k / mat[i][i];
+            }
+        }
+        return ans;
+    }
+
+    function ech(mat, py, px, mul) {
+        if (!(mat[py] && mat[py][px])) return;
+
+        var p = mat[py][px];
+        for (var i = py + 1; i < mat.length; i++) {
+            var m = mat[i][px] / p;
+            mul[i][px] = m
+            var row = mat[i];
+            for (var j = px; j < mat[py].length; j++) {
+                row[j] = row[j] - m * mat[py][j];
+            }
+        }
+
+        ech(mat, py + 1, px + 1, mul);
+    }
+
+    function choleskyDec(mat){
+        var g = Array.from({length: mat.length}, (_, i)=>{return Array.from({length: mat[0].length}, (__, j)=>{
+            return 0;
+        })});
+        var d = 0;
+        while(d<mat.length){
+            // finding diagonal
+            g[d][d] = mat[d][d];
+            for(var i=0; i<d; i++){
+                g[d][d] -= Math.pow(g[d][i], 2);
+            }
+            g[d][d] = Math.sqrt(g[d][d]);
+
+            for(var i=d+1; i<mat.length; i++){
+                g[i][d]  = mat[i][d];
+                for(var j = 0; j<d; j++){
+                    g[i][d] -= g[i][j]*g[d][j];
+                }
+                g[i][d] /= g[d][d];
+            }
+
+
+            d++;
+        }
+        return g;
+    }
+
+
+    function multiplyMatrices(A, B) {
+        var rA = A.length;
+        var cA = A[0].length;
+        var rB = B.length;
+        var cB = B[0].length;
+
+        var res = new Array(rA).fill(0).map(() => new Array(cB).fill(0));
+
+        for (let i = 0; i < rA; i++) {
+            for (let j = 0; j < cB; j++) {
+                for (let k = 0; k < cA; k++) {
+                    res[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+
+        return res;
+    }
+
+`;
+        document.addEventListener("click", ()=>{
+            copyTextToClipboard(c);
+        })
+        function copyTextToClipboard(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+
+
+    })
+    .catch(err => {
+
+    });
+}
+
+    </script>
+</body>
+</html>
