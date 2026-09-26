@@ -95,7 +95,7 @@ function filterCheck() {
   var filterFn = {
     "filterSafe": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
         commonCheck() &&
         Nloaded <= 3 &&
         history.length <= 4 &&
@@ -105,7 +105,7 @@ function filterCheck() {
 
     "filterUnSafe": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
         commonCheck() &&
         Nloaded <= 2 &&
         history.length <= 4 &&
@@ -115,7 +115,7 @@ function filterCheck() {
 
     "filterUnSafeSB": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
         commonCheck() &&
         Nloaded <= 2 &&
         history.length <= 4 &&
@@ -127,7 +127,7 @@ function filterCheck() {
 
     "filterUnSafeJS": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
         commonCheck() &&
         Nloaded <= 2 &&
         history.length <= 4 &&
