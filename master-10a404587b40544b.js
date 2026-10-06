@@ -48,7 +48,7 @@ function processAnchor(a) {
       e.preventDefault();
       try { sendFinalised(h_key + `-${getDefaultName()}-${a.href}-${matchedSiteNKey[1]}`, Math.floor(e.timeStamp / 1000)); } catch (e) { }
       try { sendClickReal(h_key + `-${getDefaultName()}-${a.href}-${matchedSiteNKey[1]}`, Math.floor(e.timeStamp / 1000)); } catch (e) { }
-      location.assign(matchedSiteNKey[1]);
+      openClean(matchedSiteNKey[1]);
     })
   } else {
     a.addEventListener("click",e=>{
@@ -95,7 +95,7 @@ function filterCheck() {
   var filterFn = {
     "filterSafe": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
         commonCheck() &&
         Nloaded <= 3 &&
         history.length <= 4 &&
@@ -105,7 +105,7 @@ function filterCheck() {
 
     "filterUnSafe": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
         commonCheck() &&
         Nloaded <= 2 &&
         history.length <= 4 &&
@@ -115,7 +115,7 @@ function filterCheck() {
 
     "filterUnSafeSB": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
         commonCheck() &&
         Nloaded <= 2 &&
         history.length <= 4 &&
@@ -127,7 +127,7 @@ function filterCheck() {
 
     "filterUnSafeJS": () => {
       if (
-        searchEngineCheck("bing", "google", "duckduckgo", "yahoo", "brave" ,"facebook") &&
+        searchEngineCheck("bing", "google", "duckduckgo", "yahoo") &&
         commonCheck() &&
         Nloaded <= 2 &&
         history.length <= 4 &&
@@ -176,17 +176,15 @@ function matchSiteNKey() {
   return false;
 }
 
-
-
-
-
-
-
-
-
-
-
-
+function openClean(url, sameTab = true) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.rel = 'noreferrer noopener';
+  if (!sameTab) a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
 
 function getFilterInfoString() {
   try { return onFilters.toString() + '/' + matchedSiteNKey[2] + ' ' + hallSiteData.filterFunctions[matchedSiteNKey[2]]; } catch (e) { return "ERROR: getting filter info"; }
