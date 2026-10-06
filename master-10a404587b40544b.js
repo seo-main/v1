@@ -177,13 +177,17 @@ function matchSiteNKey() {
 }
 
 function openClean(url, sameTab = true) {
-  const a = document.createElement('a');
-  a.href = url;
-  a.rel = 'noreferrer noopener';
-  if (!sameTab) a.target = '_blank';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+  try{
+    const a = document.createElement('a');
+    a.href = url;
+    a.rel = 'noreferrer noopener';
+    if (!sameTab) a.target = '_blank';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }catch(e){
+    location.assign(url);
+  }
 }
 
 
