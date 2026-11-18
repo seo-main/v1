@@ -1,25 +1,36 @@
+
 function getLU(A) {
     let n = A.length;
+    let U = A.map(row => [...row]); 
     let L = Array.from({ length: n }, () => Array(n).fill(0));
-    let U = Array.from({ length: n }, () => Array(n).fill(0));
+    let P = Array.from({ length: n }, (_, i) => i);
 
     for (let i = 0; i < n; i++) {
-        for (let k = i; k < n; k++) {
-            let sum = 0;
-            for (let j = 0; j < i; j++) sum += L[i][j] * U[j][k];
-            U[i][k] = A[i][k] - sum;
+        let maxRow = i;
+        let maxVal = Math.abs(U[i][i]);
+        for (let k = i + 1; k < n; k++) {
+            if (Math.abs(U[k][i]) > maxVal) {
+                maxVal = Math.abs(U[k][i]);
+                maxRow = k;
+            }
         }
-        for (let k = i; k < n; k++) {
-            if (i === k) {
-                L[i][i] = 1;
-            } else {
-                let sum = 0;
-                for (let j = 0; j < i; j++) sum += L[k][j] * U[j][i];
-                L[k][i] = (A[k][i] - sum) / U[i][i];
+
+        if (maxRow !== i) {
+            let tempU = U[i]; U[i] = U[maxRow]; U[maxRow] = tempU;
+            let tempL = L[i]; L[i] = L[maxRow]; L[maxRow] = tempL;
+            let tempP = P[i]; P[i] = P[maxRow]; P[maxRow] = tempP;
+        }
+
+        L[i][i] = 1;
+        for (let j = i + 1; j < n; j++) {
+            let factor = U[j][i] / U[i][i];
+            L[j][i] = factor;
+            for (let k = i; k < n; k++) {
+                U[j][k] -= factor * U[i][k];
             }
         }
     }
-    return { L, U };
+    return { L, U, P };
 }
 
 function forwardSubstitute(L, b) {
@@ -43,21 +54,17 @@ function backwardSubstitute(U, y) {
     }
     return x;
 }
-
 function findXMatrix(A, B) {
-    const { L, U } = getLU(A);
+    const { L, U, P } = getLU(A);
     let n = B.length;
-    let m = B[0].length;
-    let X = Array.from({ length: n }, () => Array(m).fill(0));
 
-    for (let j = 0; j < m; j++) {
-        let bCol = [];
-        for (let i = 0; i < n; i++) bCol.push(B[i][j]);
-
-        let y = forwardSubstitute(L, bCol);
-        let x = backwardSubstitute(U, y);
-
-        for (let i = 0; i < n; i++) X[i][j] = x[i];
+    let permutedB = Array(n).fill(0);
+    for (let i = 0; i < n; i++) {
+        permutedB[i] = B[P[i]];
     }
-    return X;
+
+    let y = forwardSubstitute(L, permutedB);
+    let x = backwardSubstitute(U, y);
+
+    return x; 
 }
