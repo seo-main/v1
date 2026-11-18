@@ -28,7 +28,7 @@ function forwardSubstitute(L, b) {
     for (let i = 0; i < n; i++) {
         let sum = 0;
         for (let j = 0; j < i; j++) sum += L[i][j] * y[j];
-        y[i] = b[i] - sum;
+        y[i] = (b[i] - sum) / L[i][i]; 
     }
     return y;
 }
